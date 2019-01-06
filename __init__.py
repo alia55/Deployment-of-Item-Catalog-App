@@ -1,3 +1,4 @@
+#from flask_sqlalchemy import SQLAlchemy
 from flask import Flask, render_template, request, redirect, url_for, jsonify
 from sqlalchemy import create_engine, desc
 from sqlalchemy.orm import sessionmaker
@@ -6,6 +7,7 @@ from flask import session as login_session
 from flask import flash
 import random
 import string
+
 
 # IMPORTS FOR Auth
 from oauth2client.client import flow_from_clientsecrets
@@ -17,16 +19,16 @@ import requests
 
 
 app = Flask(__name__)
+APP_PATH = '/var/www/catalog/Item-Catalog/'
 app.secret_key = 'qmsP6aFxEE92ebrc7aBcJyIQ'
 
 CLIENT_ID = json.loads(
-    open('/vagrant/catalog/client_secrets.json',
-         'r').read())['web']['client_id']
+    open('/var/www/catalog/Item-Catalog/client_secrets.json','r').read())['web']['client_id']
+
 APPLICATION_NAME = "catalog"
 
 engine = create_engine(
-                        'sqlite:///categories.db',
-                        connect_args={'check_same_thread': False})
+                        'postgresql://catalog:123456@localhost/catalog')
 
 Base.metadata.bind = engine
 
@@ -128,7 +130,7 @@ def gconnect():
 
     try:
         # Upgrade the authorization code into a credentials object
-        oauth_flow = flow_from_clientsecrets('client_secrets.json', scope='')
+        oauth_flow = flow_from_clientsecrets('/var/www/catalog/Item-Catalog/client_secrets.json', scope='')
         oauth_flow.redirect_uri = 'postmessage'
         credentials = oauth_flow.step2_exchange(code)
     except FlowExchangeError:
@@ -190,7 +192,7 @@ def gconnect():
     login_session['email'] = data['email']
 
     # see if user exists, if it doesn't make a new one
-    user_id = getUserID(login_session['email'])
+    user_id = getUserID(data['email'])
     if not user_id:
             user_id = createUser(login_session)
     login_session['user_id'] = user_id
@@ -340,23 +342,23 @@ def createUser(login_session):
                    'email'], picture=login_session['picture'])
     session.add(newUser)
     session.commit()
-    user = session.query(User).filter_by(email=login_session['email']).one()
+    user = session.query(User).filter_by(email=login_session['email']).first()
     return user.id
 
 
 def getUserInfo(user_id):
-    user = session.query(User).filter_by(id=user_id).one()
+    user = session.query(User).filter_by(id=user_id).first()
     return user
 
 
 def getUserID(email):
     try:
-        user = session.query(User).filter_by(email=email).one()
-        return user.id
+        user = session.query(User).filter_by(email=email).first()
+        return user
     except ImportError:
         return None
 
 
 if __name__ == '__main__':
     app.debug = True
-    app.run(host='0.0.0.0', port=5000)
+    app.run()
