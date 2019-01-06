@@ -54,6 +54,7 @@ Install mod_wsgi `sudo apt-get install python-setuptools libapache2-mod-wsgi `
 Restart Apache  `sudo service apache2 restart `
 ## Install and configure PostgreSQL
 * Install PostgreSQL `sudo apt-get install postgresql`
+* Check if no remote connections are allowed `sudo nano /etc/postgresql/9.5/main/pg_hba.conf`
 * Login as user "postgres" `sudo su - postgres`
 * Get into postgreSQL shell: `psql`
 * Create a new database named catalog  and create a new user named catalog in postgreSQL shell
