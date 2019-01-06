@@ -153,11 +153,11 @@ after activating the environment install all the dependecies
 * Then go to browser and type [13.232.109.22.xip.io](http://13.232.109.22.xip.io) :trophy:
 
 ## Third Party Resources
-Google OAuth
-Apache
-Ubuntu
-Flask
-Amazon Lightsail
+* Google OAuth
+* Apache
+* Ubuntu
+* Flask
+* Amazon Lightsail
 
  
   
