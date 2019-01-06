@@ -65,7 +65,7 @@ Restart Apache  `sudo service apache2 restart `
 	
 	postgres=# ALTER ROLE catalog WITH PASSWORD '123456';
 	
-* Give user "catalog" permission to "catalog" application database:unlock:
+* Give user "catalog" permission to "catalog" application database
 	
 	  postgres=# GRANT ALL PRIVILEGES ON DATABASE catalog TO catalog;
 
@@ -139,10 +139,10 @@ after activating the environment install all the dependecies
       from __init__ import app as application
       application.secret_key = 'ADD YOUR SECRET KEY HERE'
 
-## Restart Apache:gem:
-* Restart Apache:trophy: `sudo service apache2 restart `
+## Restart Apache:
+* Restart Apache`sudo service apache2 restart `
 
-* then go to browser and type [13.232.109.22.xip.io](http://13.232.109.22.xip.io)
+* Then go to browser and type [13.232.109.22.xip.io](http://13.232.109.22.xip.io) :trophy:
 
  
   
