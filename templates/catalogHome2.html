@@ -1,0 +1,51 @@
+{% extends "index.html" %}
+<html>
+
+<body>
+  {% block content %}
+
+  <div class="title">
+    <h1> Categories </h1>
+  </div>
+  <div>
+
+    <h2>{{categories.name}}</h2>
+
+
+
+    {% for i in categories %}
+
+    <div>
+
+      <h3><a href='{{url_for('categories_item_logged', categories_id = i.id) }}'>{{i.name}}</a></h3>
+      <br>
+
+
+    </div>
+  </div>
+  {% endfor %}
+
+  <div id="sidebar">
+    <div class="title">
+      <h1> Latest Items </h1>
+    </div>
+
+    {% for i in items %}
+
+    <div>
+
+
+
+      <p>{{i.name}} ({{i.categories.name}})</p>
+
+
+
+
+
+      {% endfor %}
+    </div>
+  </div>
+  {% endblock %}
+</body>
+
+</html>

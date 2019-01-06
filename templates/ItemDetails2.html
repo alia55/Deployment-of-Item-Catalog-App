@@ -1,0 +1,39 @@
+{% extends "index.html" %}
+<html>
+
+<body>
+  {% block content %}
+
+  {% for i in items %}
+
+  <div>
+
+    <h2>
+      <p>{{i.name}}</p>
+    </h2>
+
+    <p>{{i.description}}</p>
+
+
+    <a href='{{ url_for('editCategoriesItem',categories_id = categories_id, item_id=i.id)}}'>Edit</a>
+
+    |
+    <a href='{{ url_for('deleteItem',categories_id = categories_id, item_id=i.id)}}'>Delete</a>
+
+
+  </div>
+
+
+  {% endfor %}
+
+  {% for i in categories %}
+
+  <a href="/categories/{{i.id}}/view/logged" class="button button-small">Back</a>
+
+  {% endfor %}
+  </div>
+
+  {% endblock %}
+</body>
+
+</html>

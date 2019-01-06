@@ -1,0 +1,27 @@
+{% extends "index.html" %}
+<html>
+
+<head>
+	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+	{% block content %}
+
+	<h2> Are you sure you want to delete <B style="color:#FF7F50;">{{item.name}}</B>? </h2>
+
+	<form action="{{ url_for('deleteItem',categories_id = categories_id, item_id=item.id)}}" method='post'>
+
+		<div>
+			<input type='submit' , value='Delete' class="button button-small">
+
+
+	</form>
+
+	<input type='button' , value='Cancel' onClick="window.location.href='/categories/{{categories_id}}/{{item_id}}/Details/logged'" class="button button-small">
+
+	</div>
+	{% endblock %}
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+{% extends "index.html" %}
+<html>
+<body>
+
+{% block content %}
+
+<h1>{{categories.name}} items </h1>
+
+{{itemsCount}}
+
+{% for i in items %}
+
+<div>
+
+<p><a href='{{url_for('Item_Details', categories_id = categories_id, item_id = i.id) }}'>{{i.name}}</a></p>
+
+</div>
+
+
+{% endfor %}
+
+{% endblock %}
+</body>
+
+</html>

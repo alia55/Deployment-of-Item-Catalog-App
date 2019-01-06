@@ -1,0 +1,35 @@
+{% extends "index.html" %}
+<html>
+<head>
+</head>
+<body>
+
+{% block content %}
+
+
+{% for i in items %}
+
+<div>
+
+<h2><p>{{i.name}}</p></h2>
+
+<p>{{i.description}}</p>
+
+</div>
+
+
+
+
+
+{% endfor %}
+
+{% for i in categories %}
+
+<a href="/categories/{{i.id}}/view" class="button button-small">Back</a>
+{% endfor %}
+</div>
+
+  {% endblock %}
+</body>
+
+</html>

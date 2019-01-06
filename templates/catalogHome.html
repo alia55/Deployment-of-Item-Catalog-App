@@ -1,0 +1,62 @@
+{% extends "index.html" %}
+<html>
+
+<head>
+  <!--LOAD PRE-REQUISITES FOR GOOGLE SIGN IN -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js">
+  </script>
+
+  <script src="//apis.google.com/js/platform.js?onload=start"> </script>
+
+  <!-- END PRE-REQUISITES FOR GOOGLE SIGN IN -->
+</head>
+
+<body>
+
+  <input type="button" value="login" onclick="window.location.href='/login'" />
+
+  {% block content %}
+
+  <div class="title">
+    <h1> Categories </h1>
+  </div>
+  <div>
+    {{categories.name}}
+
+
+    {% for i in categories %}
+
+    <div>
+
+      <h3> <a href='{{url_for('categories_item', categories_id = i.id) }}'>{{i.name}}</a> </h3>
+      <br>
+
+      <!--END GOOGLE PLUS SIGN IN BUTTON -->
+    </div>
+  </div>
+  {% endfor %}
+
+
+  <div id="sidebar">
+    <div class="title">
+      <h1> Latest Items </h1>
+    </div>
+
+    {% for i in items %}
+
+
+
+    <p>{{i.name}} ({{i.categories.name}})</p>
+
+    {% endfor %}
+  </div>
+  </div>
+
+
+
+
+
+  {% endblock %}
+</body>
+
+</html>

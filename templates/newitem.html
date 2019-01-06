@@ -1,0 +1,32 @@
+{% extends "index.html" %}
+<html>
+
+<body>
+  {% block content %}
+
+  <h1> New Item </h1>
+
+  <form action="{{url_for('newCategoriesItem', categories_id = categories_id)}}" method='POST'>
+
+    <p>Name:</p>
+
+    <input type='text' size='30' name='name'>
+
+    <p>Description:</p>
+
+    <input type='text' size='45' name='description'>
+
+    <br>
+    <br>
+    <input type='submit' value='Create' class="button button-small">
+
+
+
+    <a href="/categories/{{categories_id}}/view/logged" class="button button-small">Cancel</a>
+
+  </form>
+
+  {% endblock %}
+</body>
+
+</html>
