@@ -48,6 +48,13 @@ after that change some permissions to only allow grader user full access to file
 then run ` service ssh restart`
 try login with ` ssh grader@13.232.109.22 -p 2200 -i ~/.ssh/graderK `
 
+## Block Root Login using SSH:
+	sudo nano /etc/ssh/sshd_config
+
+Modify the following line: `PermitRootLogin yes `
+to : `PermitRootLogin no AllowUsers bionic grader`
+then restart the ssh service `sudo service ssh restart`
+
 ## Install and configure Apache
 Install Apache  ` sudo apt-get install apache2`
 Install mod_wsgi `sudo apt-get install python-setuptools libapache2-mod-wsgi `
