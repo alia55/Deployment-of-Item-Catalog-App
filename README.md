@@ -86,9 +86,9 @@ Restart Apache  `sudo service apache2 restart `
 
       cd /var/www sudo mkdir catalog
       cd catalog
-* Clone the Item-catalog App to the catalog directoy as the following
+* Clone the Item-catalog App to the catalog directoy and name it Item-Catalog as  following
 
-      clone https://github.com/hazemkhaledmohamed/Final-Project FlaskApp 
+      clone https://github.com/alia55/Deployment-of-Item-Catalog-App.git Item-Catalog
 ## Install and Set up Flask and Virtual Environment
     sudo apt-get install python-pip 
     sudo pip install virtualenv
